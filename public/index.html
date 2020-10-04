@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC School || Bus Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style>
+        *{
+            margin: 0%;
+            padding: 0%;
+        }
+        .a{
+            height: 100vh;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        table{
+
+font-weight: bolder;         
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col s2" style="border-right: 0.2mm solid black; height: 100vh;">
+            <div class="container">
+            <h4> <center> ABC School </center></h4> <br>
+            <b>
+                <a href="index.html">Home</a> <hr>
+                <a href="register.html">Register Students</a> <hr>
+                <a href="add_bus.html">Add Buses</a> <hr>
+                <a href="remove_bus.html">Remove Busses</a> <hr>
+                <a href="update.html">Update Busses</a> <hr>
+        </b>
+        </div></div>
+        <div class="col s10 a"><h4>Bus Management System</h4>
+        <hr>
+        <div>
+            <h4>Busses</h4>
+            <table id="content" class="responsive-table highlight striped centered"><b><tr><td>Bus Id </td><td>Bus Route </td><td>Seats</td> <td>Students</td></tr></b> <br>
+                
+            </table>
+        </div>
+        <div>
+            <h4>Students</h4>
+            <table id="content2" class="responsive-table highlight striped centered"><b><tr><td>Id </td><td>Route </td><td>First Name</td> <td>Last Name</td></tr></b> <br>
+                
+            </table>
+        </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    fetch('/display/bus')
+    .then(response => response.json())
+    .then(data => {
+        for(i=0 ; i<data.length;i++){
+        console.log(data)
+        document.getElementById("content").innerHTML += "<table><tr><td>"+data[i].id+"</td><td>"+data[i].route+"<td>"+data[i].seats+"<td>"+data[i].students+"</tr></table><br>";
+    }}
+    );
+
+    fetch('/display/stu')
+    .then(response => response.json())
+    .then(data => {
+        for(i=0 ; i<data.length;i++){
+        console.log(data)
+        document.getElementById("content2").innerHTML += "<table><tr><td>"+data[i].id+"</td><td>"+data[i].route+"<td>"+data[i].first+"<td>"+data[i].last+"</tr></table><br>";
+    }}
+    );
+</script>
