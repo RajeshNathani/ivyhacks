@@ -11,7 +11,8 @@ For Management System for institute
 3. MySQL
 4. Materialize
 
-*Hosted on Heroku*
+*Hosted on Heroku* 
+https://ivybus.herokuapp.com
 
 For Parents
 1. HTML5
